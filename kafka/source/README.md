@@ -35,6 +35,8 @@ event sink.
    metadata:
      name: kafka-source
    spec:
+     binding: 
+       name: kafka-binding
      consumerGroup: knative-group
      # Broker URL. Replace this with the URLs for your kafka cluster,
      # which is in the format of my-cluster-kafka-bootstrap.my-kafka-namespace:9092.
@@ -46,6 +48,38 @@ event sink.
          kind: Service
          name: event-display
    ```
+
+If there is already existing Kafka configuration you can use it to provide default values that can be overriden in yaml file above and additional properties specific to Kafka. For example:
+
+```
+$ cat kafka.properties
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="T7f3xuwnKG0Q5V71" password="Xwup9VRp9diu4CD04vHLBIe9cLlAy3QP";
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+ssl.protocol=TLSv1.2
+ssl.enabled.protocols=TLSv1.2
+ssl.endpoint.identification.algorithm=HTTPS
+```
+
+```
+$ kubectl create secret generic kafka-secret --from-file=kafka.properties
+```
+
+```
+$ kubectl get secret kafka-secret -o yaml
+apiVersion: v1
+data:
+  kafka.properties: c2FzbC5qYWFzLmNvb...==
+kind: Secret
+metadata:
+  creationTimestamp: "2019-11-12T00:11:46Z"
+  name: kafka-secret
+  namespace: default
+  resourceVersion: "638930"
+  selfLink: /api/v1/namespaces/default/secrets/kafka-secret
+  uid: 03c39ae8-04e1-11ea-9c5d-2e8421deef0d
+type: Opaque
+```
 
 ## Example
 
