@@ -104,7 +104,7 @@ type KafkaResourceSpec struct {
 
 // KafkaSourceSpec defines the desired state of the KafkaSource.
 type KafkaSourceSpec struct {
-	KafkaBinding corev1.ObjectReference `json:"binding,omitempty"`
+	KafkaBinding *corev1.ObjectReference `json:"binding,omitempty"`
 
 	// Bootstrap servers are the Kafka servers the consumer will connect to.
 	// +required
