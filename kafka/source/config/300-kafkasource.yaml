@@ -59,6 +59,8 @@ spec:
       properties:
         spec:
           properties:
+            bindings:
+              type: object
             bootstrapServers:
               type: string
               minLength: 1
