@@ -51,7 +51,7 @@ event sink.
 
 If there is already existing Kafka configuration you can use it to provide default values that can be overriden in yaml file above and additional properties specific to Kafka. For example:
 
-```
+```bash
 $ cat kafka.properties
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="T7f3xuwnKG0Q5V71" password="Xwup9VRp9diu4CD04vHLBIe9cLlAy3QP";
 security.protocol=SASL_SSL
@@ -61,12 +61,12 @@ ssl.enabled.protocols=TLSv1.2
 ssl.endpoint.identification.algorithm=HTTPS
 ```
 
-```
-$ kubectl create secret generic kafka-secret --from-file=kafka.properties
+```bash
+$ kubectl create secret generic kafka-binding --from-file=kafka.properties
 ```
 
-```
-$ kubectl get secret kafka-secret -o yaml
+```bash
+$ kubectl get secret kafka-binding -o yaml
 apiVersion: v1
 data:
   kafka.properties: c2FzbC5qYWFzLmNvb...==
