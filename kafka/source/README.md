@@ -53,8 +53,8 @@ If there is already existing Kafka configuration you can use it to provide defau
 
 ```bash
 $ cat kafka.properties
-sasl.username="T7f3xuwnKG0Q5V71" 
-sasl.password="Xwup9VRp9diu4CD04vHLBIe9cLlAy3QP";
+sasl.username=T7f3xuwnKG0Q5V71 
+sasl.password=Xwup9VRp9diu4CD04vHLBIe9cLlAy3QP
 security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 ssl.protocol=TLSv1.2
