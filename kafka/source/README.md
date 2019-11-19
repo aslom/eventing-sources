@@ -53,7 +53,8 @@ If there is already existing Kafka configuration you can use it to provide defau
 
 ```bash
 $ cat kafka.properties
-sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="T7f3xuwnKG0Q5V71" password="Xwup9VRp9diu4CD04vHLBIe9cLlAy3QP";
+sasl.username="T7f3xuwnKG0Q5V71" 
+sasl.password="Xwup9VRp9diu4CD04vHLBIe9cLlAy3QP";
 security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 ssl.protocol=TLSv1.2
@@ -80,6 +81,14 @@ metadata:
   uid: 03c39ae8-04e1-11ea-9c5d-2e8421deef0d
 type: Opaque
 ```
+
+For compatibility with Apache Kafka properties configuraiton `sasl.jaas.config` is also supported to specify SASL username and password, for example:
+
+```
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="T7f3xuwnKG0Q5V71" password="Xwup9VRp9diu4CD04vHLBIe9cLlAy3QP";
+```
+
+List of supported property names (based on Apache Kafka and librdkafka): TBW
 
 ## Example
 
